@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.jeecg.modules.demo3.intel.mapper.ZnCalendarMapper">
-    <select id="getZnCalendarById" resultType="org.jeecg.modules.demo3.intel.entity.ZnCalendar">
-		select * from zn_calendar  where holidayid !=0
--- 		update  zn_prom_plan a,zn_prom_detail  b set a.status = 'zhuangtai'  where b.planid =#{planid}
-	</select>
-</mapper>
