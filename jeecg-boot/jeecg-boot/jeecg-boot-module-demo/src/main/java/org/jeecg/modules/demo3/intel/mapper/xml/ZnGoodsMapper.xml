@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo3.intel.mapper.ZnGoodsMapper">
+
+    <update id="updateByManualQty" >
+        update zn_goods set manual_qty = #{manualQty} where goodsname = #{goodsname}
+    </update>
+
+    <update id="updateByComment">
+        update zn_goods set comment = #{comment} where id = #{id}
+    </update>
+
+    <select id="getDbUrl" resultType="java.lang.String">
+    select distinct db_url from sys_user a inner join tmp_shop_bl_klid b on a.org_code = b.shop_organ and org_code = #{orgCode} inner join sys_data_source c on  b.shopid = c.code
+</select>
+
+    <select id="getDbPassword" resultType="java.lang.String">
+    select distinct db_password from sys_user a inner join tmp_shop_bl_klid b on a.org_code = b.shop_organ and org_code = #{orgCode} inner join sys_data_source c on  b.shopid = c.code
+</select>
+    <select id="getDbUserName" resultType="java.lang.String">
+    select distinct db_username from sys_user a inner join tmp_shop_bl_klid b on a.org_code = b.shop_organ and org_code = #{orgCode} inner join sys_data_source c on  b.shopid = c.code
+</select>
+
+    <select id="getSendNum" resultType="java.lang.Integer">
+    select send_num from zn_goods where goodsid = #{goodsid}
+</select>
+    <update id="updateSendNum">
+    update zn_goods set send_num = 1 where goodsid = #{goodsid}
+</update>
+    <select id="getSpec" resultType="String">
+    select spec from zn_goods where goodsid = #{goodsid}
+</select>
+
+    <insert id="insertSendNum">
+    insert  into send_record values (#{shopid},#{countSend},#{countSuccess},#{operator},#{sendtime})
+</insert>
+
+    <update id="changeSendNum">
+    update zn_goods set send_num = 0
+</update>
+
+    <select id="getShopid" resultType="java.lang.String">
+    select distinct shopid from sys_user a inner join tmp_shop_bl_klid b on a.org_code = b.shop_organ and org_code = #{orgCode} inner join sys_data_source c on  b.shopid = c.code
+</select>
+</mapper>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo3.dashboard.mapper.IndexChartMapper">
+
+
+    <select id="getShopGoodsCount" resultType="java.lang.Integer">
+        select count(goodsid) from zn_goods where   shopname is not null
+        <if test="shopid != null">
+           and shopid = #{shopid}
+        </if>
+
+    </select>
+
+
+    <select id="getShopName" resultType="java.lang.String">
+        select distinct shopname from zn_goods where shopname is not null
+        <if test="shopid != null">
+            and shopid = #{shopid}
+        </if>
+    </select>
+
+    <select id="getQty" resultType="java.lang.Integer">
+        select count(goodsid) from zn_goods where  shopname is not null
+        <if test="shopid != null">
+            and shopid = #{shopId}
+        </if>
+        and qty > 0
+    </select>
+
+    <select id="getNumList" resultType="java.lang.Double">
+        select qty from zn_goods where  shopname is not null
+        <if test="shopid != null">
+            and shopid = #{shopId}
+        </if>
+        order by qty desc
+    </select>
+
+    <select id="getPriceList" resultType="java.lang.Double">
+        select normalprice from zn_goods where shopname is not null
+        <if test="shopid != null">
+            and shopid = #{shopId}
+        </if>
+        order by qty desc
+    </select>
+
+    <select id="getGoodsNameList"  resultType="java.lang.String">
+        select goodsname from zn_goods where shopname is not null
+         <if test="shopid != null">
+             and shopid = #{shopId}
+         </if>
+         order by qty desc
+    </select>
+
+    <select id="getShopIdByUsername" resultType="java.lang.String">
+        select distinct b.shopid from sys_user a  inner join tmp_shop_bl_klid b on a.org_code=b.shop_organ where a.username = #{username}
+    </select>
+
+    <select id="getShopCount" resultType="int">
+        select count(distinct shopid) from zn_goods
+    </select>
+
+</mapper>

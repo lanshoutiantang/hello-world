@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo3.intel.mapper.ZnHolidayGoodsMapper">
+    <select id="getGoodsNameList"  resultType="java.lang.String">
+        select goodsname from bbzn_holiday_xl where xlid = #{xlid} order by qty desc
+    </select>
+</mapper>

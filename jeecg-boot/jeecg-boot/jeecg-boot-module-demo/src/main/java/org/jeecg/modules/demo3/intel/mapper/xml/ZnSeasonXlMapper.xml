@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.jeecg.modules.demo3.intel.mapper.ZnSeasonXlMapper">
+    <update id="updateByBegindate" >
+        update zn_season_xl set begindate = #{begindate} where xlid = #{xlid}
+    </update>
+
+    <update id="updateByEnddate" >
+        update zn_season_xl set enddate = #{enddate} where xlid = #{xlid}
+    </update>
+
+    <update id="updateByUpdateBy" >
+        update zn_season_xl set update_by = (select work_no from sys_user where username =#{username} ),
+                                update_time = current_time
+                              where xlid = #{xlid}
+    </update>
+
+<!--    <select id="getSysDataSource"  resultType="java.lang.String">-->
+<!--         select distinct b.shopid   from sys_user a inner join tmp_shop_bl_klid b on a.org_code =b.shop_organ and org_code ='A01A05A15'-->
+<!--         inner join sys_data_source c on  b.shopid = c.code-->
+<!--    </select>-->
+</mapper>
